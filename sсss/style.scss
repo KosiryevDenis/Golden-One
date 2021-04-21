@@ -3,6 +3,7 @@
 $cblack: #333;
 $cwhite: #fff;
 $cgrey: #777;
+$cbtn: #fed136;
 $fztext: 14px;
 $fzsubtitle: 16px;
 $fztitle: 18px;
@@ -13,7 +14,7 @@ body {
 }
 .container {
 	width: 100%;
-	max-width: 1400px;
+	max-width: 940px;
 	margin: 0 auto;
 }
 .intro {
@@ -38,6 +39,7 @@ body {
 			font-size: 40px;
 			margin-bottom: 48px;
 			color: $cwhite;
+			font-style: italic;
 		}
 		h1 {
 			font-size: 75px;
@@ -54,11 +56,11 @@ body {
 			font-weight: 700;
 			margin-top: 50px;
 			padding: 25px 50px;
-			background-color: #fed136;
-			transition: background 0.2 linear;
+			background-color: $cbtn;
+			transition: background 0.2s linear;
 		}
 		a:hover {
-			background-color: #c29a0b;
+			background-color: #9c7b02;
 		}
 	}
 }
@@ -71,7 +73,6 @@ body {
 	left: 0;
 	z-index: 1000;
 	&__inner {
-		padding: 0 235px;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -85,11 +86,11 @@ body {
 		text-transform: uppercase;
 		a {
 			color: $cwhite;
-			padding-left: 40px;
-			transition: color 0.2 linear;
+			margin-left: 40px;
+			transition: color 0.2s linear;
 		}
 		a:hover {
-			color: #fed136;
+			color: #c29a0b;
 		}
 	}
 }
@@ -110,25 +111,41 @@ body {
 	}
 }
 .services {
-	padding: 0 230px 120px;
+	padding-bottom: 120px;
 	display: flex;
-	justify-content: center;
+	justify-content: space-between;
 	&__block {
-		padding: 0 18px;
 		flex: 0 0 290px;
 		text-align: center;
 		img {
 			padding-bottom: 25px;
 			display: block;
 			margin: auto;
+			transition: opacity 0.2s linear;
 		}
-		a {
+		p {
 			font-weight: 700;
 			color: $cblack;
 			font-size: $fztitle;
+			transition: color 0.2s linear;
 		}
 		div {
 			color: $cgrey;
+			transition: opacity 0.2s linear;
+		}
+	}
+	&__block:nth-child(2n) {
+		padding-top: 4px;
+	}
+	&__block:hover {
+		img {
+			opacity: 0;
+		}
+		p {
+			color: #fed136;
+		}
+		div {
+			opacity: 0;
 		}
 	}
 }
@@ -136,20 +153,28 @@ body {
 	background-color: #f7f7f7;
 	padding-bottom: 120px;
 	.portfolio {
-		margin: 0 auto;
-		max-width: 1000px;
 		display: flex;
 		flex-wrap: wrap;
+		margin: 0 -35px;
+		justify-content: center;
+		&__anim {
+			position: relative;
+			padding: 17.5px;
+			margin: 0 0 32.5px;
+			z-index: 0;
+			transition: background 0.2s linear;
+		}
 		&__block {
+			position: relative;
+			z-index: 1;
 			height: 390px;
 			background-color: $cwhite;
-			margin: 0 17.5px 50px;
 			text-align: center;
-			justify-content: center;
+			transition: opacity 0.2s linear;
 			img {
 				padding-bottom: 27px;
 			}
-			a {
+			h2 {
 				display: block;
 				font-size: $fztitle;
 				font-weight: 700;
@@ -160,6 +185,45 @@ body {
 				color: $cgrey;
 				font-style: italic;
 				font-size: $fztext;
+			}
+		}
+		.opacity {
+			text-transform: uppercase;
+			position: absolute;
+			z-index: 1;
+			top: 45%;
+			font-size: 23px;
+			font-weight: 700;
+			color: #333;
+			opacity: 1;
+			word-spacing: 6px;
+			transition: opacity 0.2s linear;
+		}
+		.opacity-1 {
+			left: 65px;
+		}
+		.opacity-2 {
+			left: 42px;			
+		}
+		.opacity-3 {
+			left: 60px;
+		}
+		.opacity-4 {
+			left: 67px;
+		}
+		.opacity-5 {
+			left: 22px;
+		}
+		.opacity-6 {
+			left: 72px;
+		}
+		&__anim:hover {
+			background-color:  #fed136;
+			.bord {
+				opacity: 0.1;
+			}
+			.opacity {
+				opacity: 1;
 			}
 		}
 	}
@@ -209,9 +273,14 @@ body {
 			color: $cblack;
 			text-transform: uppercase;
 		}
-		h3 {
+		a {
 			font-weight: 700;
 			margin-bottom: 10px;
+			font-size: $fztitle;
+			color: $cblack;
+		}
+		a:hover {
+			text-decoration: underline;
 		}
 	}
 	span {
@@ -227,8 +296,6 @@ body {
 		background-color: #fed136;
 		margin: 0 auto;
 		div {
-			// flex-direction: column;
-			// text-align: center;
 			margin: 25% auto;
 			width: 100px;
 			color: #fff;
@@ -240,7 +307,7 @@ body {
 }
 .team {
 	background-color: #f7f7f7;
-	padding-bottom: 120px;
+	padding-bottom: 100px;
 	&__block	{
 		justify-content: space-around;
 		display: flex;
@@ -273,6 +340,11 @@ body {
 			width: 34px;
 			height: 34px;
 			margin: 0 4px;
+			transition: color 0.2s linear, background 0.2s linear;
+		}
+		a:hover {
+			color: #fff;
+			background-color: #333;
 		}
 		i {
 			padding-top: 20%;
@@ -294,5 +366,86 @@ body {
 	margin: 0 auto;
 	img {
 		margin: 60px 20px 63px;
+	}
+}
+.contact {
+	padding-bottom: 115px;
+	text-align: center;
+	background: url(../img/Contact.jpg) center no-repeat;
+	background-size: cover;
+	&__form {
+		display: flex;
+		justify-content: space-between;
+	}
+	::placeholder {
+		font-size: 14px;
+		color: #bbb;
+	}
+	&__data {
+		input {
+			width: 460px;
+			max-width: 100%;
+			padding: 19px;
+			border-radius: 4px;
+			margin-bottom: 25px;
+			
+			flex: 0 1 460px;
+			text-transform: uppercase;
+		}
+	}
+	textarea {
+		padding: 20px;
+		border-radius: 4px;
+		width: 460px;
+		max-width: 100%;
+		height: 210px;
+		flex: 0 1 auto;
+		text-transform: uppercase;
+	}
+	button {
+		border-radius: 4px;
+		padding: 25px 45px;
+		text-transform: uppercase;
+		background-color: $cbtn;
+		font-weight: 700;
+		color: $cwhite;
+		font-size: 18px;
+		transition: background 0.2s linear;
+	}
+	button:hover {
+		background-color: #c29a0b;
+	}
+}
+.footer {
+	display: flex;
+	text-align: center;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0 20px 0;
+	&__social {
+		margin-right: 40.5%;
+	}
+	a {
+		display: inline-block;
+		font-size: 16px;
+		background: #333;
+		color: #fff;
+		border: 3px solid #333;
+		border-radius: 50%;
+		width: 34px;
+		height: 34px;
+		margin: 0 4px;
+		transition: color 0.2s linear, background 0.2s linear;
+	}
+	a:hover {
+		color: #333;
+		background-color: #fff;
+	}
+	i {
+		padding-top: 24%;
+	}
+	.copyright {
+		font-size: 14px;
+		color: #555;
 	}
 }
